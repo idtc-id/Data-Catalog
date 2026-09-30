@@ -1,0 +1,19 @@
+{
+  "idData": "DS-0001",
+  "namaData": "Sensor Curah Hujan DAS Ciliwung (uji coba)",
+  "pemilikData": "BMKG",
+  "klasifikasiSensitivitas": "Publik",
+  "kategoriData": "Data Sensor & Aktuator (IoT)",
+  "tipeData": "Time-series/Telemetry",
+  "protokolKomunikasi": "HTTP REST API",
+  "endpoint": "https://api.contoh-uji.id/curah-hujan",
+  "metodeAutentikasi": "API Key",
+  "karakterUpdate": "Per Jam",
+  "retensiData": "Selamanya",
+  "formatData": "JSON",
+  "dokumenTerkait": "",
+  "catatan": "Ini entri uji coba untuk menguji alur GitHub Action. Boleh dihapus setelah terverifikasi.",
+  "kontributorUsernameGithub": "geoholix",
+  "dibuatPada": "2026-09-30T16:13:30Z",
+  "issue": "https://github.com/idtc-id/Data-Catalog/issues/1"
+}

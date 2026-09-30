@@ -40,6 +40,7 @@ Lihat [`docs/skema.md`](docs/skema.md) untuk penjelasan lengkap setiap kolom.
 <!-- KATALOG:START -->
 | ID | Nama Data | Kategori | Klasifikasi | Kontributor |
 |---|---|---|---|---|
+| DS-0001 | [Sensor Curah Hujan DAS Ciliwung (uji coba)](data/DS-0001.json) | Data Sensor & Aktuator (IoT) | Publik | @geoholix |
 <!-- KATALOG:END -->
 
 *(Tabel ini kosong sampai entri pertama diajukan lewat formulir.)*
