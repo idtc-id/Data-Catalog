@@ -40,6 +40,7 @@ Lihat [`docs/skema.md`](docs/skema.md) untuk penjelasan lengkap setiap kolom.
 <!-- KATALOG:START -->
 | ID | Nama Data | Kategori | Klasifikasi | Kontributor |
 |---|---|---|---|---|
+| DS-0014 | [Survei Kastil Pulau Trakai (Lithuania) — sampel Esri](data/DS-0014.json) | Data Model Visual & Geospasial | Publik | @geoholix |
 <!-- KATALOG:END -->
 
 *(Tabel ini kosong sampai entri pertama diajukan lewat formulir.)*
