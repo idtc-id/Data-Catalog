@@ -40,6 +40,7 @@ Lihat [`docs/skema.md`](docs/skema.md) untuk penjelasan lengkap setiap kolom.
 <!-- KATALOG:START -->
 | ID | Nama Data | Kategori | Klasifikasi | Kontributor |
 |---|---|---|---|---|
+| DS-0015 | [Dampak Kebakaran Marshall Fire (Superior, Colorado) — sampel Esri](data/DS-0015.json) | Data Kontekstual & Lingkungan | Publik | @geoholix |
 <!-- KATALOG:END -->
 
 *(Tabel ini kosong sampai entri pertama diajukan lewat formulir.)*
