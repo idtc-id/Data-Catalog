@@ -41,6 +41,7 @@ Lihat [`docs/skema.md`](docs/skema.md) untuk penjelasan lengkap setiap kolom.
 | ID | Nama Data | Kategori | Klasifikasi | Kontributor |
 |---|---|---|---|---|
 | DS-0005 | [Inspeksi Menara ATC Bandara Buchanan Field (Concord) — sampel Esri](data/DS-0005.json) | Data Model Visual & Geospasial | Publik | @geoholix |
+| DS-0004 | [Survei Termal Pabrik Aspal Heidelberg Materials (Berkeley) — sampel Esri](data/DS-0004.json) | Data Model Visual & Geospasial | Publik | @geoholix |
 <!-- KATALOG:END -->
 
 *(Tabel ini kosong sampai entri pertama diajukan lewat formulir.)*

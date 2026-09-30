@@ -2,6 +2,8 @@
   {
     "idData": "DS-0005",
     "namaData": "Inspeksi Menara ATC Bandara Buchanan Field (Concord) — sampel Esri",
+    "idData": "DS-0004",
+    "namaData": "Survei Termal Pabrik Aspal Heidelberg Materials (Berkeley) — sampel Esri",
     "pemilikData": "Esri (sample dataset publik)",
     "klasifikasiSensitivitas": "Publik",
     "kategoriData": "Data Model Visual & Geospasial",
@@ -17,5 +19,15 @@
     "kontributorUsernameGithub": "geoholix",
     "dibuatPada": "2026-09-30T16:24:42Z",
     "issue": "https://github.com/idtc-id/Data-Catalog/issues/5"
+    "endpoint": "https://link.esri.com/drone_data/Berkeley_Asphalt_Plant",
+    "metodeAutentikasi": "None / Open Access (Tidak ada / Publik)",
+    "karakterUpdate": "Statis",
+    "retensiData": "Selamanya",
+    "formatData": "Citra termal (645 gambar, DJI Zenmuse XT2) + produk turunan: Thermal True Ortho",
+    "dokumenTerkait": "https://www.esri.com/en-us/arcgis/products/arcgis-reality/resources/sample-drone-datasets",
+    "catatan": "Survei termal fasilitas industri (pabrik aspal). Ukuran unduhan 572 MB. Contoh baik untuk kasus pemantauan aset infrastruktur/industri. Dataset sampel publik dari Esri, bukan data milik IDTC.",
+    "kontributorUsernameGithub": "geoholix",
+    "dibuatPada": "2026-09-30T16:24:38Z",
+    "issue": "https://github.com/idtc-id/Data-Catalog/issues/4"
   }
 ]
