@@ -60,7 +60,7 @@ Setiap entri adalah satu berkas `data/DS-XXXX.json`. Contoh:
   "catatan": "",
   "kontributorUsernameGithub": "contoh-username",
   "dibuatPada": "2026-09-30T10:00:00Z",
-  "issue": "https://github.com/idtc-id/katalog-data-sensing/issues/1"
+  "issue": "https://github.com/idtc-id/Data-Catalog/issues/1"
 }
 ```
 
