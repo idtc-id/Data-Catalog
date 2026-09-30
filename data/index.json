@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "idData": "DS-0012",
+    "namaData": "Survei Benteng Angel Island (Tiburon) — sampel Esri",
+    "pemilikData": "Esri (sample dataset publik)",
+    "klasifikasiSensitivitas": "Publik",
+    "kategoriData": "Data Model Visual & Geospasial",
+    "tipeData": "Spatial/GIS",
+    "protokolKomunikasi": "Tidak berlaku",
+    "endpoint": "https://link.esri.com/drone_data/tiburon_angel_islands_state_park",
+    "metodeAutentikasi": "None / Open Access (Tidak ada / Publik)",
+    "karakterUpdate": "Statis",
+    "retensiData": "Selamanya",
+    "formatData": "Foto udara RGB (1024 gambar, Sony ILCE-7RM4A) + produk turunan: 3D Mesh, 3D Point Cloud, Gaussian Splats",
+    "dokumenTerkait": "https://www.esri.com/en-us/arcgis/products/arcgis-reality/resources/sample-drone-datasets",
+    "catatan": "Penerbangan crosshatch di benteng bersejarah Fort McDowell. Ukuran unduhan 22.8 GB — dataset sampel terbesar di kumpulan ini. Contoh kasus pelestarian cagar budaya/heritage. Dataset sampel publik dari Esri, bukan data milik IDTC.",
+    "kontributorUsernameGithub": "geoholix",
+    "dibuatPada": "2026-09-30T16:25:00Z",
+    "issue": "https://github.com/idtc-id/Data-Catalog/issues/12"
+  }
+]
