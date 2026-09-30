@@ -1,0 +1,155 @@
+name: "📡 Tambah entri Katalog Data Sensing"
+description: Daftarkan satu sumber data (sensor, IoT, geospasial, dst.) ke Katalog Data Sensing DT
+title: "[Data] "
+labels: ["data-katalog"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Isi formulir ini untuk mendaftarkan satu sumber data ke katalog. Setelah dikirim, sistem
+        akan otomatis membuatkan Pull Request berisi entri Anda untuk ditelaah pengurus Pokja 2 —
+        Anda tidak perlu membuat Pull Request sendiri.
+
+        Bingung dengan istilah di formulir ini? Lihat [skema lengkap](../../blob/main/docs/skema.md).
+
+  - type: input
+    id: nama-data
+    attributes:
+      label: Nama Data
+      placeholder: "mis. Sensor Curah Hujan DAS Ciliwung"
+    validations:
+      required: true
+
+  - type: input
+    id: pemilik-data
+    attributes:
+      label: Pemilik Data
+      description: Instansi/organisasi pemilik data ini
+      placeholder: "mis. BMKG"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: klasifikasi-sensitivitas
+    attributes:
+      label: Klasifikasi Sensitivitas Data
+      options:
+        - Publik
+        - Internal
+        - Confidential
+        - Restricted
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kategori-data
+    attributes:
+      label: Kategori Data
+      options:
+        - "Data Sensor & Aktuator (IoT)"
+        - "Data Model Visual & Geospasial"
+        - "Data Operasional & Bisnis"
+        - "Data Kontekstual & Lingkungan"
+        - "Data Statistik (Kependudukan & Ekososbud)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tipe-data
+    attributes:
+      label: Tipe Data
+      options:
+        - Time-series/Telemetry
+        - Spatial/GIS
+        - 3D/BIM Model
+        - Operational/ERP
+        - Weather API
+    validations:
+      required: true
+
+  - type: dropdown
+    id: protokol-komunikasi
+    attributes:
+      label: Protokol Komunikasi
+      options:
+        - MQTT
+        - Kafka
+        - HTTP REST API
+        - OPC UA
+        - WebSockets
+        - Tidak berlaku
+    validations:
+      required: false
+
+  - type: input
+    id: endpoint
+    attributes:
+      label: Endpoint / Koneksi
+      description: URL, detail koneksi database, dll. Jangan tempel kredensial (password/token) di sini.
+      placeholder: "https://... atau detail koneksi lainnya"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: autentikasi
+    attributes:
+      label: Metode Autentikasi / Security
+      options:
+        - OAuth2
+        - API Key
+        - X.509 Certificate
+        - "None / Open Access (Tidak ada / Publik)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: karakter-update
+    attributes:
+      label: Karakter Update Data
+      options:
+        - Real Time
+        - Per Jam
+        - Per Hari
+        - Per Minggu
+        - Per Bulan
+        - Per Tahun
+        - Statis
+    validations:
+      required: true
+
+  - type: dropdown
+    id: retensi
+    attributes:
+      label: Retensi Data
+      options:
+        - Selamanya
+        - 1 Tahun
+        - "Lainnya (jelaskan di catatan tambahan)"
+    validations:
+      required: true
+
+  - type: input
+    id: format-data
+    attributes:
+      label: Format Data
+      description: Bebas diisi — mis. JSON, CSV, Shapefile, IFC, Parquet.
+      placeholder: "mis. JSON"
+    validations:
+      required: true
+
+  - type: textarea
+    id: dokumen-terkait
+    attributes:
+      label: Dokumen Terkait
+      description: >-
+        Tempel tautan dokumen, atau seret berkas ke kotak ini — GitHub akan mengunggahnya
+        otomatis dan menyisipkan tautannya di sini.
+    validations:
+      required: false
+
+  - type: textarea
+    id: catatan
+    attributes:
+      label: Catatan tambahan
+    validations:
+      required: false

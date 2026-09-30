@@ -1,0 +1,114 @@
+name: Tambah entri katalog dari Issue
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  proses:
+    if: contains(github.event.issue.labels.*.name, 'data-katalog')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Susun berkas entri dan indeks
+        id: susun
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require("fs");
+            const path = require("path");
+
+            // Formulir Issue Form merender tiap field sebagai "### Label\n\nisi\n\n".
+            const body = context.payload.issue.body || "";
+            const bagian = body.split(/\n### /).map(s => s.trim()).filter(Boolean);
+            const data = {};
+            for (const potongan of bagian) {
+              const nl = potongan.indexOf("\n");
+              const label = (nl === -1 ? potongan : potongan.slice(0, nl))
+                .replace(/^### /, "").trim();
+              let isi = (nl === -1 ? "" : potongan.slice(nl + 1)).trim();
+              if (isi === "_No response_") isi = "";
+              data[label] = isi;
+            }
+
+            const nomor = context.payload.issue.number;
+            const idData = `DS-${String(nomor).padStart(4, "0")}`;
+            const entri = {
+              idData,
+              namaData: data["Nama Data"] || "",
+              pemilikData: data["Pemilik Data"] || "",
+              klasifikasiSensitivitas: data["Klasifikasi Sensitivitas Data"] || "",
+              kategoriData: data["Kategori Data"] || "",
+              tipeData: data["Tipe Data"] || "",
+              protokolKomunikasi: data["Protokol Komunikasi"] || "",
+              endpoint: data["Endpoint / Koneksi"] || "",
+              metodeAutentikasi: data["Metode Autentikasi / Security"] || "",
+              karakterUpdate: data["Karakter Update Data"] || "",
+              retensiData: data["Retensi Data"] || "",
+              formatData: data["Format Data"] || "",
+              dokumenTerkait: data["Dokumen Terkait"] || "",
+              catatan: data["Catatan tambahan"] || "",
+              kontributorUsernameGithub: context.payload.issue.user.login,
+              dibuatPada: context.payload.issue.created_at,
+              issue: context.payload.issue.html_url,
+            };
+
+            fs.mkdirSync("data", { recursive: true });
+            fs.writeFileSync(
+              path.join("data", `${idData}.json`),
+              JSON.stringify(entri, null, 2) + "\n"
+            );
+
+            // Bangun ulang data/index.json dan tabel di README dari SEMUA berkas entri.
+            const berkasEntri = fs
+              .readdirSync("data")
+              .filter(f => f.endsWith(".json") && f !== "index.json");
+            const semua = berkasEntri
+              .map(f => JSON.parse(fs.readFileSync(path.join("data", f), "utf8")))
+              .sort((a, b) => a.idData.localeCompare(b.idData));
+            fs.writeFileSync("data/index.json", JSON.stringify(semua, null, 2) + "\n");
+
+            const header =
+              "| ID | Nama Data | Kategori | Klasifikasi | Kontributor |\n" +
+              "|---|---|---|---|---|\n";
+            const baris = semua
+              .map(
+                e =>
+                  `| ${e.idData} | [${e.namaData}](data/${e.idData}.json) | ${e.kategoriData} | ` +
+                  `${e.klasifikasiSensitivitas} | @${e.kontributorUsernameGithub} |`
+              )
+              .join("\n");
+            const tabel = header + baris + "\n";
+
+            const mulai = "<!-- KATALOG:START -->";
+            const selesai = "<!-- KATALOG:END -->";
+            const readme = fs.readFileSync("README.md", "utf8");
+            const re = new RegExp(`${mulai}[\\s\\S]*?${selesai}`);
+            fs.writeFileSync(
+              "README.md",
+              readme.replace(re, `${mulai}\n${tabel}${selesai}`)
+            );
+
+            core.setOutput("id_data", idData);
+            core.setOutput("nama_data", entri.namaData);
+
+      - name: Buat Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Tambah entri katalog: ${{ steps.susun.outputs.nama_data }} (${{ steps.susun.outputs.id_data }})"
+          branch: "data/${{ steps.susun.outputs.id_data }}"
+          title: "Tambah entri katalog: ${{ steps.susun.outputs.nama_data }} (${{ steps.susun.outputs.id_data }})"
+          body: |
+            Entri baru dari isian formulir di issue #${{ github.event.issue.number }},
+            diajukan oleh @${{ github.event.issue.user.login }}.
+
+            Menambahkan `data/${{ steps.susun.outputs.id_data }}.json` dan memperbarui
+            `data/index.json` serta tabel di README.
+
+            Closes #${{ github.event.issue.number }}
+          labels: data-katalog

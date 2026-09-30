@@ -1,0 +1,5 @@
+# File sementara Office (muncul saat dokumen sedang dibuka)
+~$*
+*.tmp
+.DS_Store
+Thumbs.db
