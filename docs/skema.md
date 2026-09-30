@@ -8,6 +8,7 @@ catatan telaah yang sudah diselesaikan — lihat bagian "Perubahan dari rancanga
 | **ID Data** | Otomatis | `DS-0001`, `DS-0002`, ... — dari nomor issue, bukan diisi manual | — |
 | **Nama Data** | Teks | bebas | Ya |
 | **Pemilik Data** | Teks | bebas — instansi/organisasi pemilik | Ya |
+| **Gambar Pratinjau (Thumbnail)** | Gambar | seret/tempel satu gambar ke kotak formulir — dipakai sebagai thumbnail kartu di halaman katalog | Tidak |
 | **Klasifikasi Sensitivitas Data** | Dropdown | Publik, Internal, Confidential, Restricted | Ya |
 | **Kategori Data** | Dropdown | Data Sensor & Aktuator (IoT) · Data Model Visual & Geospasial · Data Operasional & Bisnis · Data Kontekstual & Lingkungan · Data Statistik (Kependudukan & Ekososbud) | Ya |
 | **Tipe Data** | Dropdown | Time-series/Telemetry, Spatial/GIS, 3D/BIM Model, Operational/ERP, Weather API | Ya |
@@ -38,6 +39,11 @@ sudah diterapkan pada skema final di atas:
    akun yang mengirim formulir (bukan diketik manual), supaya selalu akurat dan konsisten
    dengan identitas GitHub yang dipakai di seluruh organisasi `idtc-id`.
 
+Tambahan di luar rancangan awal: **Gambar Pratinjau (Thumbnail)**, memanfaatkan kemampuan
+bawaan GitHub Issue Form untuk mengunggah gambar yang diseret/ditempel ke kotak formulir —
+tautan gambarnya diambil dari markdown yang disisipkan GitHub sendiri (`![...](url)`), tanpa
+perlu server penyimpanan gambar terpisah.
+
 ## Format penyimpanan
 
 Setiap entri adalah satu berkas `data/DS-XXXX.json`. Contoh:
@@ -47,6 +53,7 @@ Setiap entri adalah satu berkas `data/DS-XXXX.json`. Contoh:
   "idData": "DS-0001",
   "namaData": "Sensor Curah Hujan DAS Ciliwung",
   "pemilikData": "BMKG",
+  "gambarUrl": "",
   "klasifikasiSensitivitas": "Publik",
   "kategoriData": "Data Sensor & Aktuator (IoT)",
   "tipeData": "Time-series/Telemetry",

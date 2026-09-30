@@ -36,12 +36,19 @@ jobs:
               data[label] = isi;
             }
 
+            // Kotak "Gambar Pratinjau" menyimpan markdown gambar yang disisipkan GitHub
+            // sendiri saat gambar diseret/ditempel, mis. "![nama](https://...)".
+            const gambarMd = data["Gambar Pratinjau (Thumbnail)"] || "";
+            const cocokGambar = gambarMd.match(/!\[[^\]]*\]\((https?:\/\/[^\s)]+)\)/);
+            const gambarUrl = cocokGambar ? cocokGambar[1] : "";
+
             const nomor = context.payload.issue.number;
             const idData = `DS-${String(nomor).padStart(4, "0")}`;
             const entri = {
               idData,
               namaData: data["Nama Data"] || "",
               pemilikData: data["Pemilik Data"] || "",
+              gambarUrl,
               klasifikasiSensitivitas: data["Klasifikasi Sensitivitas Data"] || "",
               kategoriData: data["Kategori Data"] || "",
               tipeData: data["Tipe Data"] || "",

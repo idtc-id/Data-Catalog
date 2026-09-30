@@ -116,6 +116,11 @@
   .card{
     background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-lg);
     box-shadow:var(--shadow-sm); padding:20px 22px; border-left-width:5px; border-left-style:solid;
+    overflow:hidden;
+  }
+  .card .thumb{
+    display:block; width:calc(100% + 44px); margin:-20px -22px 14px -22px;
+    aspect-ratio:16/9; object-fit:cover; background:var(--line);
   }
   .card .id{ font-size:.74rem; color:var(--ink-mute); font-weight:700; letter-spacing:.03em; margin-bottom:6px; }
   .card h3{ font-size:1.02rem; margin-bottom:8px; }
@@ -336,6 +341,7 @@ function kartuHtml(e){
   const warna = KATEGORI_WARNA[e.kategoriData] || "var(--ink-mute)";
   return `
     <article class="card" style="border-left-color:${warna}">
+      ${e.gambarUrl ? `<img class="thumb" src="${escapeHtml(e.gambarUrl)}" alt="" loading="lazy">` : ""}
       <div class="id">${escapeHtml(e.idData)}</div>
       <h3>${escapeHtml(e.namaData)}</h3>
       <div class="pemilik">${escapeHtml(e.pemilikData)}</div>

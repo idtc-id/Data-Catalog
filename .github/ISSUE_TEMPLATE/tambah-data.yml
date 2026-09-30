@@ -29,6 +29,17 @@ body:
     validations:
       required: true
 
+  - type: textarea
+    id: gambar-pratinjau
+    attributes:
+      label: Gambar Pratinjau (Thumbnail)
+      description: >-
+        Opsional. Seret & lepas, atau tempel (paste) SATU gambar di kotak ini — GitHub akan
+        mengunggahnya otomatis dan menyisipkan tautannya di sini. Gambar ini tampil sebagai
+        thumbnail kartu di halaman katalog (mis. tangkapan layar peta/citra). Rasio 16:9 disarankan.
+    validations:
+      required: false
+
   - type: dropdown
     id: klasifikasi-sensitivitas
     attributes:
