@@ -1,4 +1,4 @@
-# Katalog Data Sensing DT
+# Katalog Data Digital Twin
 
 **Pokja 2 — Data, Teknologi, Implementasi**
 
