@@ -14,9 +14,13 @@ untuk aturan penyimpanan data mentah.
 
 1. Buka tab **Issues** → **New issue** → pilih **📡 Tambah entri Katalog Data Sensing**.
 2. Isi formulirnya, lalu **Create**.
-3. Sistem otomatis membuatkan Pull Request berisi entri Anda dalam beberapa detik.
+3. Sistem otomatis membuatkan Pull Request berisi entri Anda (satu berkas `data/DS-XXXX.json`)
+   dalam beberapa detik.
 4. Pengurus Pokja 2 menelaah dan menggabungkannya — entri Anda resmi masuk katalog begitu
-   Pull Request itu digabungkan.
+   Pull Request itu digabungkan. Beberapa saat kemudian sistem membuatkan/memperbarui satu
+   Pull Request terpisah berlabel `chore: perbarui indeks katalog` yang menyinkronkan
+   `data/index.json` dan tabel di README — gabungkan juga PR ini agar tampilan katalog ikut
+   terbarui.
 
 ## Cara memperbarui atau menghapus entri
 
@@ -26,10 +30,11 @@ mengubah dokumen di repo IDTC lain (lihat modul
 buka berkasnya → ikon pensil ✏️ → ubah → **Commit changes...** → **Propose changes** →
 **Create pull request**.
 
-> Catatan: tabel di bawah dan `data/index.json` dibangun ulang otomatis setiap ada entri **baru**
-> lewat formulir. Mengedit berkas entri yang sudah ada secara langsung tidak memicu pembaruan
-> tabel ini — perbarui juga baris yang relevan di tabel bila field yang ditampilkan (Nama Data,
-> Kategori, Klasifikasi) ikut berubah.
+> Catatan: tabel di bawah dan `data/index.json` dibangun ulang otomatis dari isi folder `data/`
+> yang sebenarnya setiap kali ada perubahan pada berkas entri di `main` (entri baru maupun
+> perbarui/hapus entri lama) — lewat Pull Request terpisah berlabel
+> `chore: perbarui indeks katalog`. Gabungkan PR itu untuk membuat perubahan tampil di halaman
+> web dan tabel ini.
 
 ## Skema data
 
@@ -40,10 +45,9 @@ Lihat [`docs/skema.md`](docs/skema.md) untuk penjelasan lengkap setiap kolom.
 <!-- KATALOG:START -->
 | ID | Nama Data | Kategori | Klasifikasi | Kontributor |
 |---|---|---|---|---|
+| DS-0003 | [Survei Drone Rancho Del Mar (Baja California) — sampel Esri](data/DS-0003.json) | Data Model Visual & Geospasial | Publik | @geoholix |
 | DS-0004 | [Survei Termal Pabrik Aspal Heidelberg Materials (Berkeley) — sampel Esri](data/DS-0004.json) | Data Model Visual & Geospasial | Publik | @geoholix |
 <!-- KATALOG:END -->
-
-*(Tabel ini kosong sampai entri pertama diajukan lewat formulir.)*
 
 ## Lisensi
 
