@@ -151,10 +151,10 @@ body:
   - type: textarea
     id: dokumen-terkait
     attributes:
-      label: Dokumen Terkait
+      label: Data dan Dokumen
       description: >-
-        Tempel tautan dokumen, atau seret berkas ke kotak ini — GitHub akan mengunggahnya
-        otomatis dan menyisipkan tautannya di sini.
+        Data dan dokumen pendukung dapat diupload disini - GitHub akan mengunggah dan
+        melampirkan url-nya.
     validations:
       required: false
 

@@ -18,7 +18,7 @@ catatan telaah yang sudah diselesaikan — lihat bagian "Perubahan dari rancanga
 | **Karakter Update Data** | Dropdown | Real Time, Per Jam, Per Hari, Per Minggu, Per Bulan, Per Tahun, Statis | Ya |
 | **Retensi Data** | Dropdown | Selamanya, 1 Tahun, Lainnya (jelaskan di catatan) | Ya |
 | **Format Data** | Teks bebas | mis. JSON, CSV, Shapefile, IFC, Parquet | Ya |
-| **Dokumen Terkait** | Teks/tautan | tempel tautan atau seret berkas ke kotak formulir | Tidak |
+| **Data dan Dokumen** | Teks/tautan | tempel tautan, atau upload data/dokumen pendukung ke kotak formulir | Tidak |
 | **Catatan tambahan** | Teks bebas | keterangan lain yang tidak tertampung kolom di atas | Tidak |
 | **Kontributor (username GitHub)** | Otomatis | diambil dari akun yang membuka issue, bukan diisi manual | — |
 

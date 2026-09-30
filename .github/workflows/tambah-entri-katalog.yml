@@ -58,7 +58,7 @@ jobs:
               karakterUpdate: data["Karakter Update Data"] || "",
               retensiData: data["Retensi Data"] || "",
               formatData: data["Format Data"] || "",
-              dokumenTerkait: data["Dokumen Terkait"] || "",
+              dokumenTerkait: data["Data dan Dokumen"] || "",
               catatan: data["Catatan tambahan"] || "",
               kontributorUsernameGithub: context.payload.issue.user.login,
               dibuatPada: context.payload.issue.created_at,

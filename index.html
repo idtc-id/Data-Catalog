@@ -359,7 +359,7 @@ function kartuHtml(e){
           <div><dt>Autentikasi</dt><dd>${escapeHtml(e.metodeAutentikasi)}</dd></div>
           <div><dt>Retensi</dt><dd>${escapeHtml(e.retensiData)}</dd></div>
           <div><dt>Format Data</dt><dd>${escapeHtml(e.formatData)}</dd></div>
-          ${e.dokumenTerkait ? `<div><dt>Dokumen Terkait</dt><dd>${tampilkanNilai(e.dokumenTerkait)}</dd></div>` : ""}
+          ${e.dokumenTerkait ? `<div><dt>Data dan Dokumen</dt><dd>${tampilkanNilai(e.dokumenTerkait)}</dd></div>` : ""}
           ${e.catatan ? `<div><dt>Catatan</dt><dd>${escapeHtml(e.catatan)}</dd></div>` : ""}
         </div>
       </details>
