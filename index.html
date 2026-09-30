@@ -243,6 +243,15 @@ function escapeHtml(s){
   return String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
 }
 
+function tampilkanNilai(s){
+  if(!s) return "—";
+  if(/^https?:\/\//i.test(s.trim())){
+    const url = escapeHtml(s.trim());
+    return `<a href="${url}" target="_blank" rel="noopener">${url}</a>`;
+  }
+  return escapeHtml(s);
+}
+
 let SEMUA = [];
 
 async function muat(){
@@ -340,11 +349,11 @@ function kartuHtml(e){
         <div class="detail-grid">
           <div><dt>Tipe Data</dt><dd>${escapeHtml(e.tipeData)}</dd></div>
           <div><dt>Protokol</dt><dd>${escapeHtml(e.protokolKomunikasi || "—")}</dd></div>
-          <div><dt>Endpoint / Koneksi</dt><dd>${escapeHtml(e.endpoint || "—")}</dd></div>
+          <div><dt>Endpoint / Koneksi</dt><dd>${tampilkanNilai(e.endpoint)}</dd></div>
           <div><dt>Autentikasi</dt><dd>${escapeHtml(e.metodeAutentikasi)}</dd></div>
           <div><dt>Retensi</dt><dd>${escapeHtml(e.retensiData)}</dd></div>
           <div><dt>Format Data</dt><dd>${escapeHtml(e.formatData)}</dd></div>
-          ${e.dokumenTerkait ? `<div><dt>Dokumen Terkait</dt><dd>${escapeHtml(e.dokumenTerkait)}</dd></div>` : ""}
+          ${e.dokumenTerkait ? `<div><dt>Dokumen Terkait</dt><dd>${tampilkanNilai(e.dokumenTerkait)}</dd></div>` : ""}
           ${e.catatan ? `<div><dt>Catatan</dt><dd>${escapeHtml(e.catatan)}</dd></div>` : ""}
         </div>
       </details>
