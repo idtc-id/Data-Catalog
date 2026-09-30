@@ -40,7 +40,7 @@ Lihat [`docs/skema.md`](docs/skema.md) untuk penjelasan lengkap setiap kolom.
 <!-- KATALOG:START -->
 | ID | Nama Data | Kategori | Klasifikasi | Kontributor |
 |---|---|---|---|---|
-| DS-0003 | [Survei Drone Rancho Del Mar (Baja California) — sampel Esri](data/DS-0003.json) | Data Model Visual & Geospasial | Publik | @geoholix |
+| DS-0004 | [Survei Termal Pabrik Aspal Heidelberg Materials (Berkeley) — sampel Esri](data/DS-0004.json) | Data Model Visual & Geospasial | Publik | @geoholix |
 <!-- KATALOG:END -->
 
 *(Tabel ini kosong sampai entri pertama diajukan lewat formulir.)*
