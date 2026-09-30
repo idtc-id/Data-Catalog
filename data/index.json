@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "idData": "DS-0006",
+    "namaData": "Survei Red Rocks Amphitheatre (Denver) — sampel Esri",
+    "pemilikData": "Esri (sample dataset publik)",
+    "klasifikasiSensitivitas": "Publik",
+    "kategoriData": "Data Model Visual & Geospasial",
+    "tipeData": "Spatial/GIS",
+    "protokolKomunikasi": "Tidak berlaku",
+    "endpoint": "https://link.esri.com/drone_data/denver_red_rocks_amphitheatre",
+    "metodeAutentikasi": "None / Open Access (Tidak ada / Publik)",
+    "karakterUpdate": "Statis",
+    "retensiData": "Selamanya",
+    "formatData": "Foto udara RGB (309 gambar, Sony ILCE-7RM4A) + produk turunan: 3D Mesh, 3D Point Cloud, Gaussian Splats",
+    "dokumenTerkait": "https://www.esri.com/en-us/arcgis/products/arcgis-reality/resources/sample-drone-datasets",
+    "catatan": "Penerbangan crosshatch di venue acara/amphitheatre. Ukuran unduhan 6.94 GB. Contoh kasus pemodelan 3D situs berskala besar. Dataset sampel publik dari Esri, bukan data milik IDTC.",
+    "kontributorUsernameGithub": "geoholix",
+    "dibuatPada": "2026-09-30T16:24:46Z",
+    "issue": "https://github.com/idtc-id/Data-Catalog/issues/6"
+  }
+]
