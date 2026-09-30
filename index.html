@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Katalog Data Sensing DT — IDTC</title>
+<meta name="description" content="Katalog sumber data sensing (IoT, geospasial, BIM, ERP, cuaca) Pokja 2 Indonesia Digital Twin Community.">
+<link rel="icon" href="https://idtc-id.github.io/assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-900: #071a33;
+    --navy-800: #0b2447;
+    --blue-600: #1557b0;
+    --blue-500: #1e6fd9;
+    --cyan-400: #4fd6e8;
+
+    --ink: #0e1b2c;
+    --ink-soft: #4a5b74;
+    --ink-mute: #7286a1;
+    --paper: #ffffff;
+    --paper-alt: #f5f8fc;
+    --line: #e3eaf3;
+
+    --pokja2: #e8622c;
+
+    /* Kategori Data — palet kategorikal tervalidasi (validate_palette.js, mode light: ALL PASS) */
+    --series-1: #1e6fd9; /* Data Sensor & Aktuator (IoT) */
+    --series-2: #e8622c; /* Data Model Visual & Geospasial */
+    --series-3: #0f9b8e; /* Data Operasional & Bisnis */
+    --series-4: #6b4fd6; /* Data Kontekstual & Lingkungan */
+    --series-5: #c9970e; /* Data Statistik (Kependudukan & Ekososbud) */
+
+    --radius-xl: 24px;
+    --radius-lg: 18px;
+    --radius-md: 14px;
+    --radius-sm: 10px;
+    --shadow-sm: 0 8px 24px rgba(11,36,71,.07);
+    --shadow-md: 0 18px 44px rgba(11,36,71,.12);
+
+    --font-display: 'Sora', 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  body{
+    margin:0; font-family: var(--font-body); color: var(--ink);
+    background: var(--paper-alt); line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ font-family: var(--font-display); color: var(--navy-800); line-height:1.2; margin:0; }
+  a{ color: var(--blue-500); }
+  .container{ width:100%; max-width:1180px; margin:0 auto; padding:0 24px; }
+
+  header.top{
+    background: linear-gradient(135deg, var(--navy-900), var(--navy-800));
+    color:#fff; padding:44px 0 56px;
+  }
+  header.top .brand{ display:flex; align-items:center; gap:12px; margin-bottom:22px; }
+  header.top .brand img{ height:34px; }
+  header.top .brand span{ font-family:var(--font-display); font-weight:700; letter-spacing:.02em; color:#cfe0fb; }
+  header.top h1{ color:#fff; font-size:clamp(1.5rem,3vw,2.15rem); margin-bottom:8px; }
+  header.top p{ color:#aec2e6; max-width:640px; margin:0 0 4px; font-size:.97rem; }
+  header.top .back{ color:#cfe0fb; font-size:.88rem; text-decoration:none; }
+  header.top .back:hover{ text-decoration:underline; }
+
+  main{ margin-top:-34px; padding-bottom:70px; }
+
+  .kpi-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:26px; }
+  .kpi{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-lg);
+    padding:18px 20px; box-shadow:var(--shadow-sm);
+  }
+  .kpi .num{ font-family:var(--font-display); font-size:1.7rem; font-weight:700; color:var(--navy-800); }
+  .kpi .lbl{ font-size:.82rem; color:var(--ink-mute); margin-top:2px; }
+
+  .panel{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-xl);
+    box-shadow:var(--shadow-sm); padding:24px 26px; margin-bottom:24px;
+  }
+  .panel h2{ font-size:1.05rem; margin-bottom:4px; }
+  .panel .sub{ font-size:.85rem; color:var(--ink-mute); margin-bottom:18px; }
+
+  .barlist{ display:flex; flex-direction:column; gap:12px; }
+  .barlist .row{ display:grid; grid-template-columns:230px 1fr 90px; align-items:center; gap:12px; font-size:.86rem; }
+  .barlist .name{ color:var(--ink); }
+  .barlist .track{ background:var(--paper-alt); border-radius:999px; height:10px; overflow:hidden; }
+  .barlist .fill{ display:block; height:100%; border-radius:999px; min-width:4px; }
+  .barlist .val{ text-align:right; color:var(--ink-soft); font-variant-numeric:tabular-nums; }
+
+  .toolbar{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:22px; }
+  .toolbar input[type=search], .toolbar select{
+    font:inherit; font-size:.9rem; padding:10px 14px; border:1px solid var(--line);
+    border-radius:var(--radius-md); background:var(--paper); color:var(--ink); min-width:170px;
+  }
+  .toolbar input[type=search]{ flex:1 1 220px; min-width:220px; }
+  .toolbar .count{ font-size:.85rem; color:var(--ink-mute); margin-left:auto; white-space:nowrap; }
+  .viewtoggle{ display:flex; border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden; }
+  .viewtoggle button{
+    font:inherit; font-size:.85rem; border:none; background:var(--paper); color:var(--ink-soft);
+    padding:9px 16px; cursor:pointer;
+  }
+  .viewtoggle button.active{ background:var(--navy-800); color:#fff; }
+
+  .badge{
+    display:inline-flex; align-items:center; gap:5px; font-size:.76rem; font-weight:600;
+    padding:4px 10px; border-radius:999px; border:1px solid var(--line); color:var(--ink-soft);
+    background:var(--paper-alt); white-space:nowrap;
+  }
+  .badge.sensitif-publik{ color:#0b6b3a; border-color:#bfe5cf; background:#eafaf1; }
+  .badge.sensitif-internal{ color:var(--blue-600); border-color:#cfe0fb; background:#eef5ff; }
+  .badge.sensitif-confidential{ color:#9a6a06; border-color:#f3dfad; background:#fef6e6; }
+  .badge.sensitif-restricted{ color:#b91c2c; border-color:#f5c6cb; background:#fdecee; }
+
+  .cards{ display:grid; grid-template-columns:repeat(auto-fill,minmax(310px,1fr)); gap:18px; }
+  .card{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-sm); padding:20px 22px; border-left-width:5px; border-left-style:solid;
+  }
+  .card .id{ font-size:.74rem; color:var(--ink-mute); font-weight:700; letter-spacing:.03em; margin-bottom:6px; }
+  .card h3{ font-size:1.02rem; margin-bottom:8px; }
+  .card .pemilik{ font-size:.86rem; color:var(--ink-soft); margin-bottom:12px; }
+  .card .badges{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px; }
+  .card details{ font-size:.85rem; }
+  .card summary{ cursor:pointer; color:var(--blue-500); font-weight:600; list-style:none; }
+  .card summary::-webkit-details-marker{ display:none; }
+  .card .detail-grid{ margin-top:12px; display:flex; flex-direction:column; gap:7px; }
+  .card .detail-grid div{ display:flex; gap:6px; font-size:.83rem; }
+  .card .detail-grid dt{ color:var(--ink-mute); min-width:132px; flex:none; }
+  .card .detail-grid dd{ margin:0; color:var(--ink); word-break:break-word; }
+  .card .foot{ margin-top:14px; font-size:.78rem; }
+  .card .foot a{ color:var(--ink-mute); }
+
+  table.tabel{ width:100%; border-collapse:collapse; font-size:.86rem; background:var(--paper); }
+  table.tabel th, table.tabel td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); }
+  table.tabel th{ color:var(--ink-mute); font-weight:600; font-size:.76rem; text-transform:uppercase; letter-spacing:.03em; }
+  table.tabel td a{ font-weight:600; }
+  .tabel-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius-lg); }
+
+  .empty, .state{
+    text-align:center; padding:50px 20px; color:var(--ink-mute); font-size:.92rem;
+  }
+
+  .cta-tambah{
+    display:inline-flex; align-items:center; gap:8px; background:var(--pokja2); color:#fff;
+    font-weight:700; font-size:.88rem; padding:11px 20px; border-radius:999px; text-decoration:none;
+  }
+  .cta-tambah:hover{ text-decoration:none; filter:brightness(1.06); }
+
+  footer{ text-align:center; padding:30px 0 50px; color:var(--ink-mute); font-size:.82rem; }
+
+  @media (max-width: 760px){
+    .kpi-row{ grid-template-columns:repeat(2,1fr); }
+    .barlist .row{ grid-template-columns:1fr; gap:4px; }
+    .barlist .val{ text-align:left; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="container">
+    <div class="brand">
+      <img src="https://idtc-id.github.io/assets/img/emblem-white.png" alt="Logo IDTC">
+      <span>INDONESIA DIGITAL TWIN COMMUNITY</span>
+    </div>
+    <h1>Katalog Data Sensing DT</h1>
+    <p>Metadata sumber data (sensor/IoT, geospasial, BIM, ERP, cuaca) yang relevan untuk pilot project Digital Twin — dikelola Pokja 2.</p>
+    <a class="back" href="https://idtc-id.github.io/#pokja">← Kembali ke idtc-id.github.io</a>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="kpi-row" id="kpiRow"></div>
+
+  <section class="panel">
+    <h2>Entri per kategori</h2>
+    <p class="sub">Jumlah sumber data yang terdaftar pada tiap kategori.</p>
+    <div class="barlist" id="barlist"></div>
+  </section>
+
+  <section class="panel">
+    <div class="toolbar">
+      <input type="search" id="cari" placeholder="Cari nama data atau pemilik data…" aria-label="Cari">
+      <select id="filterKategori" aria-label="Filter kategori"><option value="">Semua kategori</option></select>
+      <select id="filterKlasifikasi" aria-label="Filter klasifikasi"><option value="">Semua klasifikasi</option></select>
+      <div class="viewtoggle" role="group" aria-label="Tampilan">
+        <button id="btnKartu" class="active" type="button">Kartu</button>
+        <button id="btnTabel" type="button">Tabel</button>
+      </div>
+      <span class="count" id="jumlahHasil"></span>
+    </div>
+
+    <div id="hasilKartu" class="cards"></div>
+    <div id="hasilTabel" class="tabel-wrap" style="display:none">
+      <table class="tabel">
+        <thead>
+          <tr><th>ID</th><th>Nama Data</th><th>Pemilik</th><th>Kategori</th><th>Klasifikasi</th><th>Update</th><th>Kontributor</th></tr>
+        </thead>
+        <tbody id="tbodyTabel"></tbody>
+      </table>
+    </div>
+    <div class="empty" id="kosong" hidden>Tidak ada entri yang cocok dengan pencarian/filter ini.</div>
+  </section>
+
+  <p style="text-align:center;">
+    <a class="cta-tambah" href="https://github.com/idtc-id/Data-Catalog/issues/new?template=tambah-data.yml">+ Tambah entri data</a>
+  </p>
+
+</main>
+
+<footer>
+  Indonesia Digital Twin Community — Pokja 2 · Data mengikuti lisensi/izin pemiliknya masing-masing.<br>
+  Sumber berkas: <a href="https://github.com/idtc-id/Data-Catalog/blob/main/data/index.json">data/index.json</a> ·
+  <a href="https://github.com/idtc-id/Data-Catalog/blob/main/docs/skema.md">skema data</a>
+</footer>
+
+<script>
+const KATEGORI_WARNA = {
+  "Data Sensor & Aktuator (IoT)": "var(--series-1)",
+  "Data Model Visual & Geospasial": "var(--series-2)",
+  "Data Operasional & Bisnis": "var(--series-3)",
+  "Data Kontekstual & Lingkungan": "var(--series-4)",
+  "Data Statistik (Kependudukan & Ekososbud)": "var(--series-5)",
+};
+const KATEGORI_URUTAN = Object.keys(KATEGORI_WARNA);
+
+function kelasKlasifikasi(k){
+  const map = {
+    "Publik": "sensitif-publik",
+    "Internal": "sensitif-internal",
+    "Confidential": "sensitif-confidential",
+    "Restricted": "sensitif-restricted",
+  };
+  return map[k] || "";
+}
+function ikonKlasifikasi(k){
+  const map = { "Publik": "🔓", "Internal": "🔒", "Confidential": "🔐", "Restricted": "⛔" };
+  return map[k] || "•";
+}
+function escapeHtml(s){
+  return String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+}
+
+function tampilkanNilai(s){
+  if(!s) return "—";
+  if(/^https?:\/\//i.test(s.trim())){
+    const url = escapeHtml(s.trim());
+    return `<a href="${url}" target="_blank" rel="noopener">${url}</a>`;
+  }
+  return escapeHtml(s);
+}
+
+let SEMUA = [];
+
+async function muat(){
+  const kpiRow = document.getElementById("kpiRow");
+  try {
+    const res = await fetch("data/index.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    SEMUA = await res.json();
+  } catch (e) {
+    kpiRow.innerHTML = `<div class="state" style="grid-column:1/-1">Gagal memuat data/index.json (${escapeHtml(e.message)}). Coba muat ulang halaman.</div>`;
+    return;
+  }
+  isiFilterDropdown();
+  render();
+}
+
+function isiFilterDropdown(){
+  const selK = document.getElementById("filterKategori");
+  KATEGORI_URUTAN.forEach(k => {
+    if (SEMUA.some(e => e.kategoriData === k)) {
+      const opt = document.createElement("option");
+      opt.value = k; opt.textContent = k;
+      selK.appendChild(opt);
+    }
+  });
+  const selS = document.getElementById("filterKlasifikasi");
+  ["Publik","Internal","Confidential","Restricted"].forEach(k => {
+    if (SEMUA.some(e => e.klasifikasiSensitivitas === k)) {
+      const opt = document.createElement("option");
+      opt.value = k; opt.textContent = k;
+      selS.appendChild(opt);
+    }
+  });
+}
+
+function dataTersaring(){
+  const q = document.getElementById("cari").value.trim().toLowerCase();
+  const kat = document.getElementById("filterKategori").value;
+  const kls = document.getElementById("filterKlasifikasi").value;
+  return SEMUA.filter(e => {
+    if (kat && e.kategoriData !== kat) return false;
+    if (kls && e.klasifikasiSensitivitas !== kls) return false;
+    if (q) {
+      const gab = `${e.namaData} ${e.pemilikData}`.toLowerCase();
+      if (!gab.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function renderKpi(){
+  const total = SEMUA.length;
+  const publik = SEMUA.filter(e => e.klasifikasiSensitivitas === "Publik").length;
+  const kategoriTerpakai = new Set(SEMUA.map(e => e.kategoriData)).size;
+  const kontributor = new Set(SEMUA.map(e => e.kontributorUsernameGithub)).size;
+  document.getElementById("kpiRow").innerHTML = [
+    ["Total entri", total],
+    ["Klasifikasi Publik", publik],
+    ["Kategori terpakai", kategoriTerpakai],
+    ["Kontributor", kontributor],
+  ].map(([lbl, num]) => `<div class="kpi"><div class="num">${num}</div><div class="lbl">${lbl}</div></div>`).join("");
+}
+
+function renderBarlist(){
+  const counts = KATEGORI_URUTAN.map(k => ({
+    nama: k,
+    warna: KATEGORI_WARNA[k],
+    jumlah: SEMUA.filter(e => e.kategoriData === k).length,
+  })).filter(c => c.jumlah > 0);
+  const maks = Math.max(1, ...counts.map(c => c.jumlah));
+  document.getElementById("barlist").innerHTML = counts.length
+    ? counts.map(c => `
+        <div class="row">
+          <span class="name">${escapeHtml(c.nama)}</span>
+          <span class="track"><span class="fill" style="width:${(c.jumlah/maks*100).toFixed(0)}%;background:${c.warna}"></span></span>
+          <span class="val">${c.jumlah} entri</span>
+        </div>`).join("")
+    : `<div class="state">Belum ada entri.</div>`;
+}
+
+function kartuHtml(e){
+  const warna = KATEGORI_WARNA[e.kategoriData] || "var(--ink-mute)";
+  return `
+    <article class="card" style="border-left-color:${warna}">
+      <div class="id">${escapeHtml(e.idData)}</div>
+      <h3>${escapeHtml(e.namaData)}</h3>
+      <div class="pemilik">${escapeHtml(e.pemilikData)}</div>
+      <div class="badges">
+        <span class="badge ${kelasKlasifikasi(e.klasifikasiSensitivitas)}">${ikonKlasifikasi(e.klasifikasiSensitivitas)} ${escapeHtml(e.klasifikasiSensitivitas)}</span>
+        <span class="badge">${escapeHtml(e.kategoriData)}</span>
+        <span class="badge">${escapeHtml(e.karakterUpdate)}</span>
+      </div>
+      <details>
+        <summary class="ringkas">Lihat detail ▾</summary>
+        <div class="detail-grid">
+          <div><dt>Tipe Data</dt><dd>${escapeHtml(e.tipeData)}</dd></div>
+          <div><dt>Protokol</dt><dd>${escapeHtml(e.protokolKomunikasi || "—")}</dd></div>
+          <div><dt>Endpoint / Koneksi</dt><dd>${tampilkanNilai(e.endpoint)}</dd></div>
+          <div><dt>Autentikasi</dt><dd>${escapeHtml(e.metodeAutentikasi)}</dd></div>
+          <div><dt>Retensi</dt><dd>${escapeHtml(e.retensiData)}</dd></div>
+          <div><dt>Format Data</dt><dd>${escapeHtml(e.formatData)}</dd></div>
+          ${e.dokumenTerkait ? `<div><dt>Dokumen Terkait</dt><dd>${tampilkanNilai(e.dokumenTerkait)}</dd></div>` : ""}
+          ${e.catatan ? `<div><dt>Catatan</dt><dd>${escapeHtml(e.catatan)}</dd></div>` : ""}
+        </div>
+      </details>
+      <div class="foot">
+        @${escapeHtml(e.kontributorUsernameGithub)} · <a href="${e.issue}" target="_blank" rel="noopener">lihat issue</a> ·
+        <a href="data/${e.idData}.json" target="_blank" rel="noopener">berkas JSON</a>
+      </div>
+    </article>`;
+}
+
+function barisTabelHtml(e){
+  return `
+    <tr>
+      <td>${escapeHtml(e.idData)}</td>
+      <td><a href="data/${e.idData}.json" target="_blank" rel="noopener">${escapeHtml(e.namaData)}</a></td>
+      <td>${escapeHtml(e.pemilikData)}</td>
+      <td>${escapeHtml(e.kategoriData)}</td>
+      <td>${escapeHtml(e.klasifikasiSensitivitas)}</td>
+      <td>${escapeHtml(e.karakterUpdate)}</td>
+      <td>@${escapeHtml(e.kontributorUsernameGithub)}</td>
+    </tr>`;
+}
+
+function render(){
+  renderKpi();
+  renderBarlist();
+  const hasil = dataTersaring();
+  document.getElementById("jumlahHasil").textContent = `Menampilkan ${hasil.length} dari ${SEMUA.length} entri`;
+  document.getElementById("kosong").hidden = hasil.length !== 0;
+  document.getElementById("hasilKartu").innerHTML = hasil.map(kartuHtml).join("");
+  document.getElementById("tbodyTabel").innerHTML = hasil.map(barisTabelHtml).join("");
+
+  document.querySelectorAll(".card details").forEach(det => {
+    det.addEventListener("toggle", () => {
+      det.querySelector(".ringkas").textContent = det.open ? "Sembunyikan ▴" : "Lihat detail ▾";
+    });
+  });
+}
+
+document.getElementById("cari").addEventListener("input", render);
+document.getElementById("filterKategori").addEventListener("change", render);
+document.getElementById("filterKlasifikasi").addEventListener("change", render);
+
+const btnKartu = document.getElementById("btnKartu");
+const btnTabel = document.getElementById("btnTabel");
+const hasilKartu = document.getElementById("hasilKartu");
+const hasilTabel = document.getElementById("hasilTabel");
+btnKartu.addEventListener("click", () => {
+  btnKartu.classList.add("active"); btnTabel.classList.remove("active");
+  hasilKartu.style.display = "grid"; hasilTabel.style.display = "none";
+});
+btnTabel.addEventListener("click", () => {
+  btnTabel.classList.add("active"); btnKartu.classList.remove("active");
+  hasilTabel.style.display = "block"; hasilKartu.style.display = "none";
+});
+
+muat();
+</script>
+
+</body>
+</html>
